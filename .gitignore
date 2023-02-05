@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
+/docs/mltoolbox.eda.rst
+/docs/mltoolbox.rst
+/docs/mltoolbox.visualization.rst

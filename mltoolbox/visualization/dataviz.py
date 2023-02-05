@@ -22,8 +22,15 @@ class DataViz:
     def set_figsize(self, figsize:tuple)->None:
         """
         Sets the figure size.
-        :param figsize: tuple
-        :return: None
+
+        Parameters:
+        ----------
+        figsize: tuple
+            Figure size.
+
+        Returns:
+        -------
+        None
         """
         self.figsize = figsize
 
@@ -61,6 +68,14 @@ class DataViz:
         Returns:
         -------
         None
+
+        Example:
+        --------
+        >>> import pandas as pd
+        >>> from mltoolbox.visualization.dataviz import DataViz
+        >>> df = pd.DataFrame({'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
+        >>> dv = DataViz()
+        >>> dv.plot_histogram(df, 'a')
         """
 
         # Use seaborn to plot the histogram
