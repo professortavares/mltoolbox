@@ -100,3 +100,64 @@ class DataViz:
 
         # Show the plot
         plt.show()
+
+    def plot_boxplot(self,
+                     df:pd.DataFrame,
+                     column:str,
+                     ylabel:str=None,
+                     title:str=None)->None:
+        """
+        Plots a boxplot from a dataframe.
+
+        Parameters:
+        ----------
+
+        df: pd.DataFrame
+            Dataframe to plot boxplot from.
+
+        column: str
+            Column to plot boxplot from.
+
+        xlabel: str, default=None
+            Label for the x-axis.
+
+        ylabel: str, default=None
+            Label for the y-axis.
+
+        title: str, default=None
+            Title of the plot.
+
+        Returns:
+        -------
+        None
+
+        Example:
+        --------
+        >>> import pandas as pd
+        >>> from mltoolbox.visualization.dataviz import DataViz
+        >>> df = pd.DataFrame({'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
+        >>> dv = DataViz()
+        >>> dv.plot_boxplot(df, 'a')
+        """
+
+        # Use seaborn to plot the boxplot
+        sns.set(rc={'figure.figsize': self.figsize})
+        sns.boxplot(y=column,
+                    data=df,
+                    width=0.5,
+                    palette='Set2',
+                    fliersize=5,
+                    linewidth=1.5)
+
+
+        # If some of the parameters are not set, set them
+        if ylabel is None:
+            ylabel = column
+        if title is None:
+            title = 'Boxplot of ' + column
+
+        plt.ylabel(ylabel)
+        plt.title(title)
+
+        # Show the plot
+        plt.show()
