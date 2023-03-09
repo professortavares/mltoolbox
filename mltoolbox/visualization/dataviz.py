@@ -161,3 +161,69 @@ class DataViz:
 
         # Show the plot
         plt.show()
+
+    def plot_scatterplot(self,
+                         df:pd.DataFrame,
+                         x:str,
+                         y:str,
+                         xlabel:str=None,
+                         ylabel:str=None,
+                         title:str=None)->None:
+        """
+        Plots a scatterplot from a dataframe.
+
+        Parameters:
+        ----------
+
+        df: pd.DataFrame
+            Dataframe to plot scatterplot from.
+
+        x: str
+            Column to plot on the x-axis.
+
+        y: str
+            Column to plot on the y-axis.
+
+        xlabel: str, default=None
+            Label for the x-axis.
+
+        ylabel: str, default=None
+            Label for the y-axis.
+
+        title: str, default=None
+            Title of the plot.
+
+        Returns:
+        -------
+        None
+
+        Example:
+        --------
+        >>> import pandas as pd
+        >>> from mltoolbox.visualization.dataviz import DataViz
+        >>> df = pd.DataFrame({'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        ...                    'b': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
+        >>> dv = DataViz()
+        >>> dv.plot_scatterplot(df, 'a', 'b')
+        """
+
+        # Use seaborn to plot the scatterplot
+        sns.set(rc={'figure.figsize': self.figsize})
+        sns.scatterplot(x=x,
+                        y=y,
+                        data=df)
+
+        # If some of the parameters are not set, set them
+        if xlabel is None:
+            xlabel = x
+        if ylabel is None:
+            ylabel = y
+        if title is None:
+            title = 'Scatterplot of ' + x + ' and ' + y
+
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.title(title)
+
+        # Show the plot
+        plt.show()
